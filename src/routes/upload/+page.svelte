@@ -156,7 +156,8 @@
 				throw new Error(body.message || `Upload failed (${response.status})`);
 			}
 
-			const result: { uploadId: string; filename: string; sizeBytes: number } = await response.json();
+			const result: { uploadId: string; filename: string; sizeBytes: number } =
+				await response.json();
 			uploadId = result.uploadId;
 			uploadProgress = 100;
 
@@ -391,9 +392,7 @@
 					</svg>
 				</div>
 				<div>
-					<p class="text-lg font-medium text-gray-700">
-						Drag and drop your world bundle here
-					</p>
+					<p class="text-lg font-medium text-gray-700">Drag and drop your world bundle here</p>
 					<p class="text-sm text-gray-400 mt-1">or click to browse files</p>
 				</div>
 			</div>
@@ -426,9 +425,7 @@
 			<!-- File info header -->
 			<div class="flex items-center justify-between mb-4">
 				<div class="flex items-center gap-3">
-					<div
-						class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center"
-					>
+					<div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
 						<svg
 							class="w-5 h-5 text-indigo-600"
 							fill="none"
@@ -465,11 +462,7 @@
 							stroke="currentColor"
 							stroke-width="1.5"
 						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M6 18L18 6M6 6l12 12"
-							/>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 						</svg>
 					</button>
 				{/if}
@@ -509,11 +502,7 @@
 						<h3 class="text-sm font-semibold text-gray-700">Validation Results</h3>
 						{#if stage === 'validating'}
 							<span class="text-xs text-blue-600 flex items-center gap-1">
-								<svg
-									class="w-3 h-3 animate-spin"
-									viewBox="0 0 24 24"
-									fill="none"
-								>
+								<svg class="w-3 h-3 animate-spin" viewBox="0 0 24 24" fill="none">
 									<circle
 										cx="12"
 										cy="12"
@@ -559,10 +548,7 @@
 								<div class="flex-1 min-w-0">
 									<div class="flex items-center gap-2">
 										<span class="font-medium text-gray-800">{check.name}</span>
-										<span
-											class="text-xs text-gray-400 font-mono"
-											>{check.ruleId}</span
-										>
+										<span class="text-xs text-gray-400 font-mono">{check.ruleId}</span>
 									</div>
 									{#if check.message}
 										<p class="text-xs text-gray-600 mt-0.5 truncate">
@@ -584,16 +570,15 @@
 									</p>
 									{#if validationWarnings > 0}
 										<p class="text-xs text-green-700 mt-1">
-											{validationWarnings} warning{validationWarnings !== 1
-												? 's'
-												: ''} (non-blocking)
+											{validationWarnings} warning{validationWarnings !== 1 ? 's' : ''} (non-blocking)
 										</p>
 									{/if}
 								</div>
 							{:else}
 								<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
 									<p class="text-red-800 font-medium">
-										{'\u2717'} Validation failed with {validationErrors} error{validationErrors !== 1
+										{'\u2717'} Validation failed with {validationErrors} error{validationErrors !==
+										1
 											? 's'
 											: ''}
 									</p>
@@ -621,20 +606,19 @@
 		<h3 class="text-sm font-semibold text-gray-700 mb-2">Accepted formats</h3>
 		<ul class="text-sm text-gray-500 space-y-1">
 			<li>
-				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.glb</code> &mdash; glTF Binary
-				(3D scene)
+				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.glb</code> &mdash; glTF Binary (3D scene)
 			</li>
 			<li>
-				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.wasm</code> &mdash; WebAssembly
-				module (world script)
+				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.wasm</code> &mdash; WebAssembly module
+				(world script)
 			</li>
 			<li>
-				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.kosmos</code> &mdash; Kosmos
-				world bundle (pre-packaged)
+				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.kosmos</code> &mdash; Kosmos world bundle
+				(pre-packaged)
 			</li>
 			<li>
-				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.worldbundle</code> &mdash;
-				World bundle archive
+				<code class="bg-gray-200 px-1.5 py-0.5 rounded text-xs">.worldbundle</code> &mdash; World bundle
+				archive
 			</li>
 		</ul>
 	</div>

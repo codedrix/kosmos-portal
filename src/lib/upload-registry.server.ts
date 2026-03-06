@@ -18,10 +18,7 @@ export interface UploadEntry {
 const uploadRegistry = new Map<string, UploadEntry>();
 
 /** Register a new upload */
-export function registerUpload(
-	uploadId: string,
-	entry: UploadEntry
-): void {
+export function registerUpload(uploadId: string, entry: UploadEntry): void {
 	uploadRegistry.set(uploadId, entry);
 }
 

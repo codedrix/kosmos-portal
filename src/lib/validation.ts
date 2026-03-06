@@ -71,7 +71,13 @@ const RULE_NAMES: Record<string, string> = {
 	SEC_003: 'No symlinks'
 };
 
-function makeCheck(ruleId: string, status: ValidationCheck['status'], message?: string, value?: number, limit?: number): ValidationCheck {
+function makeCheck(
+	ruleId: string,
+	status: ValidationCheck['status'],
+	message?: string,
+	value?: number,
+	limit?: number
+): ValidationCheck {
 	return {
 		ruleId,
 		category: getRuleCategory(ruleId),
@@ -136,17 +142,29 @@ async function checkManifestExists(filePath: string): Promise<ValidationCheck> {
 			if (ext === '.worldbundle' || ext === '.kosmos') {
 				// Bundle file exists — manifest is inside the archive.
 				// We pass with a note that archive-internal checks need full parser.
-				return makeCheck(RULE_IDS.MANIFEST_001, 'pass', 'Bundle file present; manifest inside archive');
+				return makeCheck(
+					RULE_IDS.MANIFEST_001,
+					'pass',
+					'Bundle file present; manifest inside archive'
+				);
 			}
 			// Single .glb or .wasm — no manifest expected at this stage
-			return makeCheck(RULE_IDS.MANIFEST_001, 'pass', 'Single file upload — manifest not required for individual assets');
+			return makeCheck(
+				RULE_IDS.MANIFEST_001,
+				'pass',
+				'Single file upload — manifest not required for individual assets'
+			);
 		}
 		// Directory upload: check for manifest.json
 		try {
 			await stat(join(filePath, 'manifest.json'));
 			return makeCheck(RULE_IDS.MANIFEST_001, 'pass', 'manifest.json found');
 		} catch {
-			return makeCheck(RULE_IDS.MANIFEST_001, 'fail', 'manifest.json not found in bundle directory');
+			return makeCheck(
+				RULE_IDS.MANIFEST_001,
+				'fail',
+				'manifest.json not found in bundle directory'
+			);
 		}
 	} catch {
 		return makeCheck(RULE_IDS.MANIFEST_001, 'fail', 'Cannot read upload path');

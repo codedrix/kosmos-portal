@@ -18,7 +18,10 @@
 			<!-- Nav Links -->
 			<div class="hidden md:flex items-center gap-6">
 				{#each navLinks as link}
-					<a href={link.href} class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">
+					<a
+						href={link.href}
+						class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors"
+					>
 						{link.label}
 					</a>
 				{/each}
@@ -28,10 +31,7 @@
 			<div class="flex items-center gap-3">
 				{#if data.session}
 					<span class="text-sm text-gray-600">{data.user?.email ?? 'Creator'}</span>
-					<a
-						href="/dashboard"
-						class="text-sm font-medium text-indigo-600 hover:text-indigo-700"
-					>
+					<a href="/dashboard" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">
 						My Dashboard
 					</a>
 				{:else}
@@ -61,7 +61,9 @@
 	<footer class="bg-white border-t border-gray-200 py-8">
 		<div class="container mx-auto px-4 text-center text-sm text-gray-500">
 			<p>&copy; {new Date().getFullYear()} Kosmos. All rights reserved.</p>
-			<p class="mt-1">Build worlds for VR &mdash; <span class="font-mono text-xs">publish.kosmos.world</span></p>
+			<p class="mt-1">
+				Build worlds for VR &mdash; <span class="font-mono text-xs">publish.kosmos.world</span>
+			</p>
 		</div>
 	</footer>
 </div>

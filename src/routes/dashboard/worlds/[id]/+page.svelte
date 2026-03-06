@@ -74,7 +74,9 @@
 <div>
 	<!-- Back link -->
 	<div class="mb-6">
-		<a href="/dashboard/worlds" class="text-sm text-indigo-600 hover:text-indigo-700">&larr; Back to My Worlds</a>
+		<a href="/dashboard/worlds" class="text-sm text-indigo-600 hover:text-indigo-700"
+			>&larr; Back to My Worlds</a
+		>
 	</div>
 
 	<!-- World Header -->
@@ -82,7 +84,11 @@
 		<div>
 			<div class="flex items-center gap-3 mb-2">
 				<h1 class="text-3xl font-bold">{world.name}</h1>
-				<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {statusBadgeClass(world.status)}">
+				<span
+					class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {statusBadgeClass(
+						world.status
+					)}"
+				>
 					{world.status}
 				</span>
 			</div>
@@ -110,7 +116,9 @@
 		<nav class="flex gap-6">
 			{#each tabs as tab}
 				<button
-					onclick={() => { activeTab = tab.id; }}
+					onclick={() => {
+						activeTab = tab.id;
+					}}
 					class="pb-3 text-sm font-medium border-b-2 transition-colors {activeTab === tab.id
 						? 'border-indigo-600 text-indigo-600'
 						: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}"
@@ -140,10 +148,22 @@
 							class="w-full rounded-lg border border-gray-200 object-cover aspect-video"
 						/>
 					{:else}
-						<div class="w-full rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center aspect-video bg-gray-50">
+						<div
+							class="w-full rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center aspect-video bg-gray-50"
+						>
 							<div class="text-center text-gray-400">
-								<svg class="w-8 h-8 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+								<svg
+									class="w-8 h-8 mx-auto mb-1"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									stroke-width="1"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+									/>
 								</svg>
 								<p class="text-xs">No thumbnail</p>
 							</div>
@@ -167,19 +187,27 @@
 						<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
 							<div class="bg-white rounded-lg border border-gray-200 p-4">
 								<p class="text-xs text-gray-500 mb-1">Bundle Size</p>
-								<p class="text-lg font-semibold text-gray-800">{formatBytes(latestVersion.bundle_size_bytes)}</p>
+								<p class="text-lg font-semibold text-gray-800">
+									{formatBytes(latestVersion.bundle_size_bytes)}
+								</p>
 							</div>
 							<div class="bg-white rounded-lg border border-gray-200 p-4">
 								<p class="text-xs text-gray-500 mb-1">Wasm Size</p>
-								<p class="text-lg font-semibold text-gray-800">{formatBytes(latestVersion.wasm_size_bytes)}</p>
+								<p class="text-lg font-semibold text-gray-800">
+									{formatBytes(latestVersion.wasm_size_bytes)}
+								</p>
 							</div>
 							<div class="bg-white rounded-lg border border-gray-200 p-4">
 								<p class="text-xs text-gray-500 mb-1">Triangles</p>
-								<p class="text-lg font-semibold text-gray-800">{formatTriangles(latestVersion.triangle_count)}</p>
+								<p class="text-lg font-semibold text-gray-800">
+									{formatTriangles(latestVersion.triangle_count)}
+								</p>
 							</div>
 						</div>
 					{:else}
-						<div class="bg-gray-50 rounded-lg border border-gray-200 p-4 text-sm text-gray-400 text-center">
+						<div
+							class="bg-gray-50 rounded-lg border border-gray-200 p-4 text-sm text-gray-400 text-center"
+						>
 							No version data available.
 						</div>
 					{/if}
@@ -190,11 +218,15 @@
 			<div class="bg-white rounded-lg border border-gray-200 p-5">
 				<h3 class="text-sm font-medium text-gray-500 mb-2">World URL</h3>
 				<div class="flex items-center gap-3">
-					<code class="flex-1 bg-gray-50 px-3 py-2 rounded text-sm font-mono text-gray-700 border border-gray-200">
+					<code
+						class="flex-1 bg-gray-50 px-3 py-2 rounded text-sm font-mono text-gray-700 border border-gray-200"
+					>
 						{worldUrl}
 					</code>
 				</div>
-				<p class="text-xs text-gray-400 mt-2">Users visit your world using this URL in the Kosmos VR browser.</p>
+				<p class="text-xs text-gray-400 mt-2">
+					Users visit your world using this URL in the Kosmos VR browser.
+				</p>
 			</div>
 		</div>
 	{/if}
@@ -204,8 +236,18 @@
 		<div class="space-y-4">
 			{#if versions.length === 0}
 				<div class="bg-white rounded-lg border border-gray-200 p-8 text-center text-gray-400">
-					<svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+					<svg
+						class="w-10 h-10 mx-auto mb-2 text-gray-300"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						stroke-width="1"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+						/>
 					</svg>
 					<p>No versions published yet.</p>
 					<p class="text-sm mt-1">Upload a bundle to create the first version.</p>
@@ -213,7 +255,9 @@
 			{:else}
 				<!-- Version List -->
 				<div class="bg-white rounded-lg border border-gray-200">
-					<div class="hidden sm:grid sm:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-wider">
+					<div
+						class="hidden sm:grid sm:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-wider"
+					>
 						<div class="col-span-2">Version</div>
 						<div class="col-span-3">Date</div>
 						<div class="col-span-2">Bundle Size</div>
@@ -223,24 +267,34 @@
 					</div>
 					<div class="divide-y divide-gray-100">
 						{#each versions as version, i}
-							<div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-6 py-4 items-center {i === 0 ? 'bg-indigo-50/30' : ''}">
+							<div
+								class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 px-6 py-4 items-center {i ===
+								0
+									? 'bg-indigo-50/30'
+									: ''}"
+							>
 								<div class="col-span-2">
 									<span class="text-sm font-semibold text-gray-900">v{version.version}</span>
 									{#if i === 0}
-										<span class="ml-2 text-xs bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded">Current</span>
+										<span class="ml-2 text-xs bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded"
+											>Current</span
+										>
 									{/if}
 								</div>
 								<div class="col-span-3">
 									<span class="text-sm text-gray-600">{formatDateTime(version.created_at)}</span>
 								</div>
 								<div class="col-span-2">
-									<span class="text-sm text-gray-600">{formatBytes(version.bundle_size_bytes)}</span>
+									<span class="text-sm text-gray-600">{formatBytes(version.bundle_size_bytes)}</span
+									>
 								</div>
 								<div class="col-span-2">
 									<span class="text-sm text-gray-600">{formatBytes(version.wasm_size_bytes)}</span>
 								</div>
 								<div class="col-span-2">
-									<span class="text-sm text-gray-600">{formatTriangles(version.triangle_count)}</span>
+									<span class="text-sm text-gray-600"
+										>{formatTriangles(version.triangle_count)}</span
+									>
 								</div>
 								<div class="col-span-1 text-right">
 									{#if i !== 0}
@@ -270,7 +324,9 @@
 				<form method="POST" action="?/updateWorld" use:enhance>
 					<div class="space-y-4">
 						<div>
-							<label for="edit-name" class="block text-sm font-medium text-gray-700 mb-1">World Name</label>
+							<label for="edit-name" class="block text-sm font-medium text-gray-700 mb-1"
+								>World Name</label
+							>
 							<input
 								id="edit-name"
 								name="name"
@@ -280,13 +336,16 @@
 							/>
 						</div>
 						<div>
-							<label for="edit-desc" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+							<label for="edit-desc" class="block text-sm font-medium text-gray-700 mb-1"
+								>Description</label
+							>
 							<textarea
 								id="edit-desc"
 								name="description"
 								rows={3}
 								class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-y"
-							>{world.description ?? ''}</textarea>
+								>{world.description ?? ''}</textarea
+							>
 						</div>
 					</div>
 					<button
@@ -302,27 +361,39 @@
 			<div class="bg-white rounded-lg border border-gray-200 p-6">
 				<h2 class="text-lg font-semibold mb-2">Visibility</h2>
 				<p class="text-sm text-gray-600 mb-4">
-					Control whether your world appears in public listings. Unlisted worlds are only accessible via direct URL.
+					Control whether your world appears in public listings. Unlisted worlds are only accessible
+					via direct URL.
 				</p>
 				<form method="POST" action="?/toggleVisibility" use:enhance>
-					<input type="hidden" name="status" value={world.status === 'published' ? 'unlisted' : 'published'} />
+					<input
+						type="hidden"
+						name="status"
+						value={world.status === 'published' ? 'unlisted' : 'published'}
+					/>
 					<div class="flex items-center justify-between">
 						<div>
 							<p class="text-sm font-medium text-gray-900">
-								Currently: <span class="font-semibold {world.status === 'published' ? 'text-green-600' : 'text-yellow-600'}">{world.status}</span>
+								Currently: <span
+									class="font-semibold {world.status === 'published'
+										? 'text-green-600'
+										: 'text-yellow-600'}">{world.status}</span
+								>
 							</p>
 						</div>
 						{#if world.status !== 'removed'}
 							<button
 								type="submit"
-								class="px-4 py-2 text-sm font-medium border rounded-lg transition-colors {world.status === 'published'
+								class="px-4 py-2 text-sm font-medium border rounded-lg transition-colors {world.status ===
+								'published'
 									? 'text-yellow-700 border-yellow-300 hover:bg-yellow-50'
 									: 'text-green-700 border-green-300 hover:bg-green-50'}"
 							>
 								{world.status === 'published' ? 'Make Unlisted' : 'Publish'}
 							</button>
 						{:else}
-							<p class="text-sm text-red-500">This world has been removed. Contact support to restore it.</p>
+							<p class="text-sm text-red-500">
+								This world has been removed. Contact support to restore it.
+							</p>
 						{/if}
 					</div>
 				</form>

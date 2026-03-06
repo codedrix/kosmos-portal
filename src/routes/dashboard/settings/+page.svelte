@@ -5,7 +5,12 @@
 	let { data, form } = $props();
 
 	const profile = $derived(data.profile as CreatorProfile | null);
-	const apiKeys = $derived(data.apiKeys as Pick<ApiKey, 'id' | 'creator_id' | 'key_prefix' | 'label' | 'last_used_at' | 'revoked' | 'created_at'>[]);
+	const apiKeys = $derived(
+		data.apiKeys as Pick<
+			ApiKey,
+			'id' | 'creator_id' | 'key_prefix' | 'label' | 'last_used_at' | 'revoked' | 'created_at'
+		>[]
+	);
 	const email = $derived(data.email as string);
 
 	// Separate active and revoked keys
@@ -48,7 +53,9 @@
 			<form method="POST" action="?/updateProfile" use:enhance>
 				<div class="space-y-4">
 					<div>
-						<label for="display-name" class="block text-sm font-medium text-gray-700 mb-1">Display Name</label>
+						<label for="display-name" class="block text-sm font-medium text-gray-700 mb-1"
+							>Display Name</label
+						>
 						<input
 							id="display-name"
 							name="display_name"
@@ -59,7 +66,9 @@
 						/>
 					</div>
 					<div>
-						<label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+						<label for="username" class="block text-sm font-medium text-gray-700 mb-1"
+							>Username</label
+						>
 						<input
 							id="username"
 							name="username"
@@ -68,7 +77,9 @@
 							placeholder="your-username"
 							class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
 						/>
-						<p class="text-xs text-gray-400 mt-1">Lowercase letters, numbers, and hyphens. 3-32 characters.</p>
+						<p class="text-xs text-gray-400 mt-1">
+							Lowercase letters, numbers, and hyphens. 3-32 characters.
+						</p>
 					</div>
 					<div>
 						<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -106,13 +117,17 @@
 								<div class="flex items-center gap-2">
 									<span class="font-mono text-sm text-gray-800">{key.key_prefix}...</span>
 									{#if key.label}
-										<span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{key.label}</span>
+										<span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"
+											>{key.label}</span
+										>
 									{/if}
 								</div>
 								<div class="flex items-center gap-3 mt-1">
 									<span class="text-xs text-gray-400">Created {formatDate(key.created_at)}</span>
 									{#if key.last_used_at}
-										<span class="text-xs text-gray-400">Last used {formatDate(key.last_used_at)}</span>
+										<span class="text-xs text-gray-400"
+											>Last used {formatDate(key.last_used_at)}</span
+										>
 									{:else}
 										<span class="text-xs text-gray-400">Never used</span>
 									{/if}
@@ -131,7 +146,9 @@
 					{/each}
 				</div>
 			{:else}
-				<div class="mb-4 p-4 border-2 border-dashed border-gray-300 rounded-lg text-center text-gray-400 text-sm">
+				<div
+					class="mb-4 p-4 border-2 border-dashed border-gray-300 rounded-lg text-center text-gray-400 text-sm"
+				>
 					No active API keys.
 				</div>
 			{/if}
@@ -146,9 +163,13 @@
 							<div class="flex items-center justify-between px-4 py-3">
 								<div>
 									<div class="flex items-center gap-2">
-										<span class="font-mono text-sm text-gray-500 line-through">{key.key_prefix}...</span>
+										<span class="font-mono text-sm text-gray-500 line-through"
+											>{key.key_prefix}...</span
+										>
 										{#if key.label}
-											<span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded">{key.label}</span>
+											<span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded"
+												>{key.label}</span
+											>
 										{/if}
 									</div>
 									<span class="text-xs text-gray-400">Revoked</span>
@@ -169,8 +190,8 @@
 					npx kosmos-worldpublisher auth generate-key --label "my-key"
 				</code>
 				<p class="text-xs text-gray-400 mt-2">
-					The CLI will authenticate you and store the key securely.
-					API key generation from the portal will be available in a future update.
+					The CLI will authenticate you and store the key securely. API key generation from the
+					portal will be available in a future update.
 				</p>
 			</div>
 		</div>

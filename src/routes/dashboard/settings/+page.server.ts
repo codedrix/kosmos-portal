@@ -37,7 +37,10 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	return {
 		profile: (profile as CreatorProfile) ?? null,
-		apiKeys: (apiKeys ?? []) as Pick<ApiKey, 'id' | 'creator_id' | 'key_prefix' | 'label' | 'last_used_at' | 'revoked' | 'created_at'>[],
+		apiKeys: (apiKeys ?? []) as Pick<
+			ApiKey,
+			'id' | 'creator_id' | 'key_prefix' | 'label' | 'last_used_at' | 'revoked' | 'created_at'
+		>[],
 		email: user.email ?? ''
 	};
 };

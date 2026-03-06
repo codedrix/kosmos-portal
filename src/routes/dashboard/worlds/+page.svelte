@@ -10,9 +10,7 @@
 	let activeFilter = $state<FilterValue>('all');
 
 	const filteredWorlds = $derived(
-		activeFilter === 'all'
-			? worlds
-			: worlds.filter((w) => w.status === activeFilter)
+		activeFilter === 'all' ? worlds : worlds.filter((w) => w.status === activeFilter)
 	);
 
 	const filters: { label: string; value: FilterValue }[] = [
@@ -76,8 +74,11 @@
 	<div class="flex gap-2 mb-6">
 		{#each filters as filter}
 			<button
-				onclick={() => { activeFilter = filter.value; }}
-				class="px-3 py-1.5 text-sm font-medium rounded-full transition-colors {activeFilter === filter.value
+				onclick={() => {
+					activeFilter = filter.value;
+				}}
+				class="px-3 py-1.5 text-sm font-medium rounded-full transition-colors {activeFilter ===
+				filter.value
 					? 'bg-indigo-100 text-indigo-700'
 					: 'text-gray-500 hover:bg-gray-100'}"
 			>
@@ -99,8 +100,18 @@
 		{#if filteredWorlds.length === 0}
 			<div class="p-12 text-center text-gray-400">
 				{#if worlds.length === 0}
-					<svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+					<svg
+						class="w-12 h-12 mx-auto mb-3 text-gray-300"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						stroke-width="1"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+						/>
 					</svg>
 					<p class="mb-2">No worlds found.</p>
 					<p class="text-sm">
@@ -113,7 +124,9 @@
 			</div>
 		{:else}
 			<!-- Table Header -->
-			<div class="hidden sm:grid sm:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-wider">
+			<div
+				class="hidden sm:grid sm:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-wider"
+			>
 				<div class="col-span-4">World</div>
 				<div class="col-span-2">Status</div>
 				<div class="col-span-2">Slug</div>
@@ -137,9 +150,21 @@
 									class="w-10 h-7 rounded object-cover border border-gray-200 shrink-0"
 								/>
 							{:else}
-								<div class="w-10 h-7 rounded bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0">
-									<svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+								<div
+									class="w-10 h-7 rounded bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0"
+								>
+									<svg
+										class="w-4 h-4 text-gray-400"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										stroke-width="1.5"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+										/>
 									</svg>
 								</div>
 							{/if}
@@ -148,7 +173,11 @@
 
 						<!-- Status Badge -->
 						<div class="col-span-2">
-							<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {statusBadgeClass(world.status)}">
+							<span
+								class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {statusBadgeClass(
+									world.status
+								)}"
+							>
 								{world.status}
 							</span>
 						</div>

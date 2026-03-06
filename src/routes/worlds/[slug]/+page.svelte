@@ -76,7 +76,10 @@
 <svelte:head>
 	<title>{world ? `${world.name} — Kosmos` : 'World Not Found — Kosmos'}</title>
 	{#if world}
-		<meta name="description" content={world.description || `${world.name} by ${world.author} — a VR world on Kosmos.`} />
+		<meta
+			name="description"
+			content={world.description || `${world.name} by ${world.author} — a VR world on Kosmos.`}
+		/>
 	{/if}
 </svelte:head>
 
@@ -85,7 +88,13 @@
 	{#if data.error && !world}
 		<div class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-6">
 			<div class="flex items-start gap-3">
-				<svg class="w-5 h-5 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+				<svg
+					class="w-5 h-5 mt-0.5 shrink-0"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
 					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -95,7 +104,9 @@
 				<div>
 					<p class="font-semibold">Unable to load world details</p>
 					<p class="text-sm mt-1">{data.error}</p>
-					<a href="/worlds" class="text-sm text-indigo-600 hover:text-indigo-700 mt-3 inline-block">&larr; Back to Explore</a>
+					<a href="/worlds" class="text-sm text-indigo-600 hover:text-indigo-700 mt-3 inline-block"
+						>&larr; Back to Explore</a
+					>
 				</div>
 			</div>
 		</div>
@@ -121,7 +132,9 @@
 					/>
 				</div>
 			{:else}
-				<div class="w-full h-64 md:h-80 bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 flex items-center justify-center">
+				<div
+					class="w-full h-64 md:h-80 bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 flex items-center justify-center"
+				>
 					<svg
 						class="w-20 h-20 text-indigo-200"
 						fill="none"
@@ -147,19 +160,39 @@
 						</p>
 
 						<!-- world:// URL -->
-						<div class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 mb-4">
-							<code class="text-sm font-mono text-indigo-600 font-semibold">world://{world.slug}</code>
+						<div
+							class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 mb-4"
+						>
+							<code class="text-sm font-mono text-indigo-600 font-semibold"
+								>world://{world.slug}</code
+							>
 							<button
 								onclick={copyWorldUrl}
 								class="text-gray-400 hover:text-indigo-600 transition-colors"
 								title="Copy world URL"
 							>
 								{#if copied}
-									<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+									<svg
+										class="w-4 h-4 text-green-500"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											d="M4.5 12.75l6 6 9-13.5"
+										/>
 									</svg>
 								{:else}
-									<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<svg
+										class="w-4 h-4"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										stroke-width="2"
+									>
 										<path
 											stroke-linecap="round"
 											stroke-linejoin="round"
@@ -211,7 +244,11 @@
 					</div>
 					<div class="bg-gray-50 rounded-lg p-4">
 						<p class="text-xs text-gray-400 uppercase tracking-wide">Status</p>
-						<p class="text-lg font-semibold capitalize {statusColor(world.status)} inline-block px-2 py-0.5 rounded">
+						<p
+							class="text-lg font-semibold capitalize {statusColor(
+								world.status
+							)} inline-block px-2 py-0.5 rounded"
+						>
 							{world.status}
 						</p>
 					</div>
@@ -223,7 +260,9 @@
 						<p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Capabilities</p>
 						<div class="flex flex-wrap gap-2">
 							{#each world.capabilities as cap}
-								<span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-indigo-50 text-indigo-700 rounded-full">
+								<span
+									class="inline-flex items-center px-3 py-1 text-xs font-medium bg-indigo-50 text-indigo-700 rounded-full"
+								>
 									{cap}
 								</span>
 							{/each}
@@ -245,7 +284,9 @@
 
 	<!-- Clipboard Toast -->
 	{#if copied}
-		<div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-lg shadow-lg text-sm font-medium z-50 animate-fade-in">
+		<div
+			class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-lg shadow-lg text-sm font-medium z-50 animate-fade-in"
+		>
 			Copied world://{world?.slug} to clipboard
 		</div>
 	{/if}

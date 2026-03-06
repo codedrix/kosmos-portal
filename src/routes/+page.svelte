@@ -10,9 +10,7 @@
 	<!-- Hero Section -->
 	<section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
 		<div class="container mx-auto px-4 py-24 text-center">
-			<h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-				Build worlds for VR
-			</h1>
+			<h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Build worlds for VR</h1>
 			<p class="text-xl md:text-2xl text-indigo-100 mb-10 max-w-2xl mx-auto">
 				Create, publish, and share immersive 3D worlds on Kosmos — the VR browser for Meta Quest 3.
 			</p>
@@ -43,7 +41,8 @@
 				</div>
 				<h3 class="text-xl font-semibold mb-2">Create</h3>
 				<p class="text-gray-600">
-					Build 3D worlds using glTF models and WebAssembly scripts. Use the Creator SDK to add interactivity with Rust or C.
+					Build 3D worlds using glTF models and WebAssembly scripts. Use the Creator SDK to add
+					interactivity with Rust or C.
 				</p>
 			</div>
 
@@ -54,7 +53,9 @@
 				</div>
 				<h3 class="text-xl font-semibold mb-2">Publish</h3>
 				<p class="text-gray-600">
-					Validate, optimize, and upload your world bundle through the CLI or this portal. Get a <code class="text-sm bg-gray-100 px-1 rounded">world://</code> URL instantly.
+					Validate, optimize, and upload your world bundle through the CLI or this portal. Get a <code
+						class="text-sm bg-gray-100 px-1 rounded">world://</code
+					> URL instantly.
 				</p>
 			</div>
 
@@ -65,7 +66,8 @@
 				</div>
 				<h3 class="text-xl font-semibold mb-2">Share</h3>
 				<p class="text-gray-600">
-					Share your world URL with anyone on Quest 3. Visitors enter your world in seconds — like visiting a website, but in VR.
+					Share your world URL with anyone on Quest 3. Visitors enter your world in seconds — like
+					visiting a website, but in VR.
 				</p>
 			</div>
 		</div>

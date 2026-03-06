@@ -14,7 +14,11 @@ import { randomUUID } from 'node:crypto';
 import { UPLOAD_MAX_BYTES, ACCEPTED_EXTENSIONS, type AcceptedExtension } from '$lib/constants.js';
 import { registerUpload, cleanupStaleUploads } from '$lib/upload-registry.server.js';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, locals }) => {
+	if (!locals.user) {
+		throw error(401, 'Authentication required');
+	}
+
 	cleanupStaleUploads();
 
 	const contentType = request.headers.get('content-type') ?? '';
@@ -38,14 +42,20 @@ export const POST: RequestHandler = async ({ request }) => {
 	const filename = file.name;
 	const ext = ('.' + filename.split('.').pop()?.toLowerCase()) as string;
 	if (!ACCEPTED_EXTENSIONS.includes(ext as AcceptedExtension)) {
-		throw error(400, `Invalid file extension "${ext}". Accepted: ${ACCEPTED_EXTENSIONS.join(', ')}`);
+		throw error(
+			400,
+			`Invalid file extension "${ext}". Accepted: ${ACCEPTED_EXTENSIONS.join(', ')}`
+		);
 	}
 
 	// Validate file size (server-side gate)
 	const sizeBytes = file.size;
 	if (sizeBytes > UPLOAD_MAX_BYTES) {
 		const sizeMB = (sizeBytes / (1024 * 1024)).toFixed(1);
-		throw error(413, `File too large (${sizeMB} MB). Maximum upload size is ${UPLOAD_MAX_BYTES / (1024 * 1024)} MB.`);
+		throw error(
+			413,
+			`File too large (${sizeMB} MB). Maximum upload size is ${UPLOAD_MAX_BYTES / (1024 * 1024)} MB.`
+		);
 	}
 
 	if (sizeBytes === 0) {

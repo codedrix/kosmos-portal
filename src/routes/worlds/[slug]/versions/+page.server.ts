@@ -34,9 +34,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 	const slug = params.slug;
 
 	try {
-		const res = await fetch(
-			`${baseUrl}/api/v1/worlds/${encodeURIComponent(slug)}`
-		);
+		const res = await fetch(`${baseUrl}/api/v1/worlds/${encodeURIComponent(slug)}`);
 
 		if (!res.ok) {
 			if (res.status === 404) {
@@ -65,8 +63,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 		if (err && typeof err === 'object' && 'status' in err) {
 			throw err;
 		}
-		const message =
-			err instanceof Error ? err.message : 'Failed to connect to the World Registry';
+		const message = err instanceof Error ? err.message : 'Failed to connect to the World Registry';
 		return {
 			world: null,
 			versions: [] as VersionEntry[],

@@ -13,20 +13,18 @@ import type { CookieSerializeOptions } from 'cookie';
 export const handle: Handle = async ({ event, resolve }) => {
 	// Create a Supabase server client for this request.
 	// The cookie handlers bridge SvelteKit's cookie API with Supabase's session persistence.
-	event.locals.supabase = createServerClient(
-		PUBLIC_SUPABASE_URL,
-		PUBLIC_SUPABASE_ANON_KEY,
-		{
-			cookies: {
-				getAll: () => event.cookies.getAll(),
-				setAll: (cookiesToSet: Array<{ name: string; value: string; options: CookieSerializeOptions }>) => {
-					cookiesToSet.forEach(({ name, value, options }) => {
-						event.cookies.set(name, value, { ...options, path: '/' });
-					});
-				}
+	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+		cookies: {
+			getAll: () => event.cookies.getAll(),
+			setAll: (
+				cookiesToSet: Array<{ name: string; value: string; options: CookieSerializeOptions }>
+			) => {
+				cookiesToSet.forEach(({ name, value, options }) => {
+					event.cookies.set(name, value, { ...options, path: '/' });
+				});
 			}
 		}
-	);
+	});
 
 	// Use getUser() for server-side auth verification.
 	// Unlike getSession(), getUser() re-validates the JWT against the Supabase auth server,

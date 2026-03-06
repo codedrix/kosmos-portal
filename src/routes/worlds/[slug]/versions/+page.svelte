@@ -64,7 +64,13 @@
 	{#if data.error && !world}
 		<div class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-6">
 			<div class="flex items-start gap-3">
-				<svg class="w-5 h-5 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+				<svg
+					class="w-5 h-5 mt-0.5 shrink-0"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
 					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -74,7 +80,9 @@
 				<div>
 					<p class="font-semibold">Unable to load version history</p>
 					<p class="text-sm mt-1">{data.error}</p>
-					<a href="/worlds" class="text-sm text-indigo-600 hover:text-indigo-700 mt-3 inline-block">&larr; Back to Explore</a>
+					<a href="/worlds" class="text-sm text-indigo-600 hover:text-indigo-700 mt-3 inline-block"
+						>&larr; Back to Explore</a
+					>
 				</div>
 			</div>
 		</div>
@@ -85,7 +93,8 @@
 		<nav class="mb-6 text-sm text-gray-500">
 			<a href="/worlds" class="hover:text-indigo-600 transition-colors">Explore</a>
 			<span class="mx-2">/</span>
-			<a href="/worlds/{world.slug}" class="hover:text-indigo-600 transition-colors">{world.name}</a>
+			<a href="/worlds/{world.slug}" class="hover:text-indigo-600 transition-colors">{world.name}</a
+			>
 			<span class="mx-2">/</span>
 			<span class="text-gray-800 font-medium">Versions</span>
 		</nav>
@@ -105,7 +114,9 @@
 				{#each versions as version, index (version.versionId || index)}
 					{@const isLatest = index === 0}
 					<div
-						class="bg-white rounded-lg border border-gray-200 p-6 {isLatest ? 'ring-2 ring-indigo-100 border-indigo-200' : ''}"
+						class="bg-white rounded-lg border border-gray-200 p-6 {isLatest
+							? 'ring-2 ring-indigo-100 border-indigo-200'
+							: ''}"
 					>
 						<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 							<div class="flex-1 min-w-0">
@@ -114,7 +125,9 @@
 										v{version.version}
 									</span>
 									{#if isLatest}
-										<span class="px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded-full">
+										<span
+											class="px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded-full"
+										>
 											Latest
 										</span>
 									{/if}
@@ -124,7 +137,13 @@
 								</p>
 								<div class="flex items-center gap-4 mt-2 text-sm text-gray-400">
 									<span class="flex items-center gap-1">
-										<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<svg
+											class="w-4 h-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<path
 												stroke-linecap="round"
 												stroke-linejoin="round"
@@ -134,7 +153,13 @@
 										Bundle: {formatSize(version.bundle_size_bytes)}
 									</span>
 									<span class="flex items-center gap-1">
-										<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<svg
+											class="w-4 h-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<path
 												stroke-linecap="round"
 												stroke-linejoin="round"
@@ -157,7 +182,9 @@
 
 			<!-- Single version note -->
 			{#if versions.length === 1}
-				<div class="mt-8 p-6 border-2 border-dashed border-gray-200 rounded-lg text-center text-gray-400">
+				<div
+					class="mt-8 p-6 border-2 border-dashed border-gray-200 rounded-lg text-center text-gray-400"
+				>
 					<p class="text-sm">This is the only version. Future updates will appear here.</p>
 				</div>
 			{/if}

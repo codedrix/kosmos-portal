@@ -14,7 +14,11 @@ import type { RequestHandler } from './$types.js';
 import { getUploadPath } from '$lib/upload-registry.server.js';
 import { validateBundle, validateBundleFull, type ValidationCheck } from '$lib/validation.js';
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, locals }) => {
+	if (!locals.user) {
+		throw error(401, 'Authentication required');
+	}
+
 	const uploadId = url.searchParams.get('id');
 	if (!uploadId) {
 		throw error(400, 'Missing required query parameter: id');
@@ -89,7 +93,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		headers: {
 			'Content-Type': 'text/event-stream',
 			'Cache-Control': 'no-cache',
-			'Connection': 'keep-alive',
+			Connection: 'keep-alive',
 			'X-Accel-Buffering': 'no' // Disable nginx buffering if proxied
 		}
 	});

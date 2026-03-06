@@ -36,10 +36,7 @@ const baseUrl = PUBLIC_REGISTRY_URL || 'http://localhost:3001';
 /**
  * Shared fetch wrapper that throws a descriptive error on non-2xx responses.
  */
-async function registryFetch(
-	path: string,
-	options: RequestInit = {}
-): Promise<Response> {
+async function registryFetch(path: string, options: RequestInit = {}): Promise<Response> {
 	const url = `${baseUrl}${path}`;
 	const res = await fetch(url, {
 		...options,
@@ -125,9 +122,11 @@ export async function createVersion(
  * List worlds with optional filtering and pagination.
  * GET /api/v1/worlds
  */
-export async function getWorlds(
-	params?: { status?: string; limit?: number; offset?: number }
-): Promise<{ worlds: RegistryWorld[]; total: number }> {
+export async function getWorlds(params?: {
+	status?: string;
+	limit?: number;
+	offset?: number;
+}): Promise<{ worlds: RegistryWorld[]; total: number }> {
 	const query = new URLSearchParams();
 	if (params?.status) query.set('status', params.status);
 	if (params?.limit !== undefined) query.set('limit', String(params.limit));
@@ -182,10 +181,7 @@ export async function updateWorld(
  * Delete a world from the registry.
  * DELETE /api/v1/worlds/{worldId}
  */
-export async function deleteWorld(
-	worldId: string,
-	apiKey: string
-): Promise<void> {
+export async function deleteWorld(worldId: string, apiKey: string): Promise<void> {
 	await registryFetch(`/api/v1/worlds/${worldId}`, {
 		method: 'DELETE',
 		headers: authHeader(apiKey)

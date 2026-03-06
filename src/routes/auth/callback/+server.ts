@@ -14,9 +14,7 @@ export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
 	// Validate the redirect target to prevent open redirect attacks.
 	// Only allow relative paths that start with '/' and don't contain '//' or a protocol scheme.
 	const isSafeRedirect =
-		nextParam.startsWith('/') &&
-		!nextParam.startsWith('//') &&
-		!nextParam.includes('://');
+		nextParam.startsWith('/') && !nextParam.startsWith('//') && !nextParam.includes('://');
 	const next = isSafeRedirect ? nextParam : '/dashboard';
 
 	if (code) {
